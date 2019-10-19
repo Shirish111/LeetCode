@@ -1,0 +1,12 @@
+1 true
+-1 false
+0 true
+22 true
+2442 true
+3213 false
+100 false
+121 true
+123 false
+-121 false
+-123 false
+2147483647 false
