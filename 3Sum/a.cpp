@@ -36,7 +36,7 @@ class Solution {
  public:
   vector<vector<int>> threeSum(vector<int>& a) {
     vector<vector<int>> ans;
-    int n = a.size(), fp, bp, sm, value, target;
+    int n = a.size(), fp, bp, sm, target;
     sort(a.begin(), a.end());
     int i = 0;
     while (i < n - 2) {
@@ -47,18 +47,18 @@ class Solution {
         sm = a[fp] + a[bp];
         if (sm == target) {
           ans.push_back(vector<int>({a[i], a[fp], a[bp]}));
-          value = a[fp];
-          while (fp < bp && a[fp] == value) fp++;
-          value = a[bp];
-          while (fp < bp && a[bp] == value) bp--;
+          fp++;
+          bp--;
+          while (fp < bp && a[fp] == a[fp - 1]) fp++;
+          while (fp < bp && a[bp] == a[bp + 1]) bp--;
         } else if (sm < target) {
           fp++;
         } else {
           bp--;
         }
       }
-      value = a[i];
-      while (i < n && a[i] == value) i++;
+      i++;
+      while (i < n && a[i] == a[i - 1]) i++;
     }
     return ans;
   }
