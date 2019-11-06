@@ -32,7 +32,7 @@ using namespace std;
 #define R(I, X, N) for (ll I = N - 1; I >= X; I--)
 #define A(X) X.begin(), X.end()
 
-class Solution {
+class Solution1 {
  public:
   string multiply(string &a, string &b) {
     if (a == "0" || b == "0") {
@@ -82,8 +82,39 @@ class Solution {
     return ans;
   }
 };
+class Solution {
+ public:
+  string multiply(string &a, string &b) {
+    int l1 = a.length(), l2 = b.length();
+    vector<int> ans(l1 + l2, 0);
+    for (int i = l1 - 1; i >= 0; i--) {
+      for (int j = l2 - 1; j >= 0; j--) {
+        int prod = (a[i] - '0') * (b[j] - '0') + ans[i + j + 1];
+        ans[i + j + 1] = prod % 10;
+        ans[i + j] += prod / 10;
+      }
+    }
+    return build_string(ans, l1 + l2);
+  }
+  string build_string(vector<int> &v, int n) {
+    char ans[n + 1];
+    int p = 0;
+    bool flag = false;
+    for (int i = 0; i < n; i++) {
+      if (flag) {
+        ans[p++] = v[i] + '0';
+      } else if (v[i] != 0) {
+        flag = true;
+        ans[p++] = v[i] + '0';
+      }
+    }
+    ans[p] = '\0';
+    return p == 0 ? "0" : ans;
+  }
+};
 void solve() {
-  vector<pair<string, string>> tc = {{"123", "456"}, {"0", "0"}, {"1", "1"}};
+  vector<pair<string, string>> tc = {
+      {"123", "456"}, {"0", "0"}, {"1", "1"}, {"9", "9"}, {"00", "00"}};
   Solution s;
   for (auto &i : tc) {
     cout << s.multiply(i.first, i.second) << "\n";
