@@ -1,0 +1,97 @@
+// Multiply Strings
+
+// Given two non-negative integers num1 and num2 represented as strings, return
+// the product of num1 and num2, also represented as a string.
+
+// Example 1:
+
+// Input: num1 = "2", num2 = "3"
+// Output: "6"
+// Example 2:
+
+// Input: num1 = "123", num2 = "456"
+// Output: "56088"
+// Note:
+
+// The length of both num1 and num2 is < 110.
+// Both num1 and num2 contain only digits 0-9.
+// Both num1 and num2 do not contain any leading zero, except the number 0
+// itself. You must not use any built-in BigInteger library or convert the
+// inputs to integer directly.
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define X first
+#define Y second
+#define PB push_back
+#define F0(I, N) for (ll I = 0; I < N; I++)
+#define F1(I, N) for (ll I = 1; I <= N; I++)
+#define F(I, X, N) for (ll I = X; I < N; I++)
+#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
+#define R1(I, N) for (ll I = N; I > 0; I--)
+#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
+#define A(X) X.begin(), X.end()
+
+class Solution {
+ public:
+  string multiply(string &a, string &b) {
+    if (a == "0" || b == "0") {
+      return string("0");
+    }
+    int l1 = a.length(), l2 = b.length();
+    string ans;
+    for (int i = l2 - 1; i >= 0; i--) {
+      string res = multiply(a, l1, b[i] - '0');
+      res.append(l2 - i - 1, '0');
+      ans = add(ans, res);
+    }
+    return ans;
+  }
+  string multiply(string &s, int n, int num) {
+    string ans;
+    int carry = 0;
+    for (int i = n - 1; i >= 0; i--) {
+      int p = (s[i] - '0') * num + carry;
+      carry = p / 10;
+      ans.append(1, (p % 10) + '0');
+    }
+    if (carry > 0) {
+      ans.append(1, carry + '0');
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+  }
+  string add(string &a, string &b) {
+    int l1 = a.length(), l2 = b.length();
+    string ans;
+    int carry = 0;
+    int i = l1 - 1, j = l2 - 1;
+    while (i >= 0 || j >= 0) {
+      int n1 = i >= 0 ? a[i] - '0' : 0;
+      int n2 = j >= 0 ? b[j] - '0' : 0;
+      int sm = n1 + n2 + carry;
+      carry = sm / 10;
+      ans.append(1, sm % 10 + '0');
+      i--;
+      j--;
+    }
+    if (carry > 0) {
+      ans.append(1, carry + '0');
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+  }
+};
+void solve() {
+  vector<pair<string, string>> tc = {{"123", "456"}, {"0", "0"}, {"1", "1"}};
+  Solution s;
+  for (auto &i : tc) {
+    cout << s.multiply(i.first, i.second) << "\n";
+  }
+}
+int main() {
+  cin.tie(nullptr);
+  ios_base::sync_with_stdio(false);
+  solve();
+  return 0;
+}
