@@ -1,0 +1,6 @@
+PASSED: true aa *
+PASSED: true  *
+PASSED: false cb ?a
+PASSED: true adceb *a*b
+PASSED: false acdcb a*c?b
+PASSED: false aaabbbaabaaaaababaabaaabbabbbbbbbbaabababbabbbaaaaba a*******b
