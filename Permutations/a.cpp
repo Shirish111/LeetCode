@@ -28,7 +28,7 @@ using namespace std;
 #define R(I, X, N) for (ll I = N - 1; I >= X; I--)
 #define A(X) X.begin(), X.end()
 
-class Solution {
+class Solution1 {
  public:
   int n;
   vector<vector<int>> permute(vector<int>& a) {
@@ -37,7 +37,7 @@ class Solution {
     _permute(res, a, 0);
     return res;
   }
-  void _permute(vector<vector<int>>& res, vector<int> a, int l) {
+  void _permute(vector<vector<int>>& res, vector<int>& a, int l) {
     if (l == n) {
       res.push_back(a);
       return;
@@ -46,6 +46,33 @@ class Solution {
       swap(a[i], a[l]);
       _permute(res, a, l + 1);
       swap(a[i], a[l]);
+    }
+  }
+};
+class Solution {
+ public:
+  int n;
+  vector<vector<int>> permute(vector<int>& a) {
+    vector<vector<int>> res;
+    n = a.size();
+    vector<bool> visited(n, false);
+    vector<int> v(n);
+    backtrack(res, visited, a, v, 0);
+    return res;
+  }
+  void backtrack(vector<vector<int>>& res, vector<bool>& visited,
+                 vector<int>& a, vector<int>& v, int l) {
+    if (l == n) {
+      res.push_back(v);
+      return;
+    }
+    for (int i = 0; i < n; i++) {
+      if (!visited[i]) {
+        visited[i] = true;
+        v[l] = a[i];
+        backtrack(res, visited, a, v, l + 1);
+        visited[i] = false;
+      }
     }
   }
 };

@@ -27,7 +27,7 @@ using namespace std;
 #define R(I, X, N) for (ll I = N - 1; I >= X; I--)
 #define A(X) X.begin(), X.end()
 
-class Solution {
+class Solution1 {
  public:
   int n;
   vector<vector<int>> permuteUnique(vector<int>& a) {
@@ -36,7 +36,7 @@ class Solution {
     _permute(res, a, 0);
     return res;
   }
-  void _permute(vector<vector<int>>& res, vector<int> a, int l) {
+  void _permute(vector<vector<int>>& res, vector<int>& a, int l) {
     if (l == n) {
       res.push_back(a);
       return;
@@ -53,10 +53,42 @@ class Solution {
   bool should_swap(vector<int>& a, int start, int cur) {
     for (int i = start; i < cur; i++) {
       if (a[i] == a[cur]) {
-        return 0;
+        return false;
       }
     }
     return true;
+  }
+};
+class Solution {
+ public:
+  int n;
+  vector<vector<int>> permuteUnique(vector<int>& a) {
+    n = a.size();
+    vector<vector<int>> res;
+    if (n == 0) {
+      return res;
+    }
+    sort(a.begin(), a.end());
+    vector<int> v(n);
+    vector<bool> visited(n, false);
+    backtrack(res, a, v, visited, 0);
+    return res;
+  }
+  void backtrack(vector<vector<int>>& res, vector<int>& a, vector<int>& v,
+                 vector<bool>& visited, int l) {
+    if (l == n) {
+      res.push_back(v);
+      return;
+    }
+    for (int i = 0; i < n; i++) {
+      if ((visited[i]) || (i > 0 && a[i] == a[i - 1] && !visited[i - 1])) {
+        continue;
+      }
+      visited[i] = true;
+      v[l] = a[i];
+      backtrack(res, a, v, visited, l + 1);
+      visited[i] = false;
+    }
   }
 };
 void solve() {
