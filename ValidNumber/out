@@ -1,0 +1,22 @@
+0 Exp: 1 Res:1	Passed
+ 0.1 Exp: 1 Res:1	Passed
+abc Exp: 0 Res:0	Passed
+1 a Exp: 0 Res:0	Passed
+2e10 Exp: 1 Res:1	Passed
+ -90e3 Exp: 1 Res:1	Passed
+ 1e Exp: 0 Res:0	Passed
+e3 Exp: 0 Res:0	Passed
+6e-1 Exp: 1 Res:1	Passed
+99e2.5 Exp: 0 Res:0	Passed
+53.5e93 Exp: 1 Res:1	Passed
+ --6 Exp: 0 Res:0	Passed
+-+3 Exp: 0 Res:0	Passed
+95a54e53 Exp: 0 Res:0	Passed
+1  Exp: 1 Res:1	Passed
+1 1 Exp: 0 Res:0	Passed
+.1 Exp: 1 Res:1	Passed
+1. Exp: 1 Res:1	Passed
+. Exp: 0 Res:0	Passed
++ Exp: 0 Res:0	Passed
+- Exp: 0 Res:0	Passed
+0 Exp: 1 Res:1	Passed
