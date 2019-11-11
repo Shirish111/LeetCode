@@ -1,0 +1,62 @@
+// Add Binary
+
+// Given two binary strings, return their sum (also a binary string).
+
+// The input strings are both non-empty and contains only characters 1 or 0.
+
+// Example 1:
+
+// Input: a = "11", b = "1"
+// Output: "100"
+// Example 2:
+
+// Input: a = "1010", b = "1011"
+// Output: "10101"
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define X first
+#define Y second
+#define PB push_back
+#define F0(I, N) for (ll I = 0; I < N; I++)
+#define F1(I, N) for (ll I = 1; I <= N; I++)
+#define F(I, X, N) for (ll I = X; I < N; I++)
+#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
+#define R1(I, N) for (ll I = N; I > 0; I--)
+#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
+#define A(X) X.begin(), X.end()
+
+class Solution {
+ public:
+  string addBinary(string a, string b) {
+    string ans;
+    int al = a.length() - 1, bl = b.length() - 1;
+    bool c = false;
+    while (al >= 0 || bl >= 0) {
+      bool n1 = al >= 0 ? a[al--] == '1' : false;
+      bool n2 = bl >= 0 ? b[bl--] == '1' : false;
+      ans.append(1, (n1 ^ n2 ^ c) + '0');
+      c = (n1 && n2) || (c && (n1 ^ n2));
+    }
+    if (c != 0) {
+      ans.append(1, '1');
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+  }
+};
+void solve() {
+  vector<pair<string, string>> tc = {{"11", "1"}, {"1010", "1011"}};
+  Solution s;
+  for (auto &i : tc) {
+    cout << i.first << " + " << i.second << " = "
+         << s.addBinary(i.first, i.second) << "\n";
+  }
+}
+int main() {
+  cin.tie(nullptr);
+  ios_base::sync_with_stdio(false);
+  solve();
+  return 0;
+}
