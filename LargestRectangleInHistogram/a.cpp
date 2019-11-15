@@ -47,7 +47,7 @@ class SolutionBF {
     return mx;
   }
 };
-class Solution {
+class SolutionDP {
  public:
   int largestRectangleArea(vector<int>& a) {
     int n = a.size();
@@ -74,6 +74,28 @@ class Solution {
     long long mx = 0;
     for (int i = 0; i < n; i++) {
       mx = max(mx, (a[i] * (ar[i] - al[i] - 1)));
+    }
+    return mx;
+  }
+};
+// Using Stack
+class Solution {
+ public:
+  int largestRectangleArea(vector<int>& a) {
+    int n = a.size();
+    int mx = 0;
+    stack<int> s;
+    for (int i = 0; i <= n; i++) {
+      int ht = i == n ? 0 : a[i];  // Current height
+      if (s.empty() || ht >= a[s.top()]) {
+        s.push(i);
+      } else {
+        int top_ht = a[s.top()];
+        s.pop();                                      // Pop top index
+        int width = s.empty() ? i : i - s.top() - 1;  // Calculate width
+        mx = max(mx, top_ht * width);
+        i--;
+      }
     }
     return mx;
   }
