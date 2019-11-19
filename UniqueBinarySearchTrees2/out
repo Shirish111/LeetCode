@@ -1,0 +1,5 @@
+1 nullptr 2 nullptr 3 nullptr nullptr 
+1 nullptr 3 2 nullptr nullptr nullptr 
+2 1 nullptr nullptr 3 nullptr nullptr 
+3 1 nullptr 2 nullptr nullptr nullptr 
+3 2 1 nullptr nullptr nullptr nullptr 
