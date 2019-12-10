@@ -43,8 +43,10 @@ class Solution {
     if ((n > 0) ^ (d > 0)) {
       s.append(1, '-');
     }
-    long long num = abs(n);
-    long long den = abs(d);
+    long long num = n;
+    long long den = d;
+    num = abs(num);
+    den = abs(den);
     // Integral Part
     s.append(to_string(num / den));
     num = num % den;
