@@ -1,0 +1,91 @@
+// Remove Linked List Elements
+
+// Remove all elements from a linked list of integers that have value val.
+
+// Example:
+
+// Input:  1->2->6->3->4->5->6, val = 6
+// Output: 1->2->3->4->5
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define X first
+#define Y second
+#define PB push_back
+#define F0(I, N) for (ll I = 0; I < N; I++)
+#define F1(I, N) for (ll I = 1; I <= N; I++)
+#define F(I, X, N) for (ll I = X; I < N; I++)
+#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
+#define R1(I, N) for (ll I = N; I > 0; I--)
+#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
+#define A(X) X.begin(), X.end()
+
+// Definition for singly-linked list.
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode(int x) : val(x), next(NULL) {}
+};
+
+class Solution {
+public:
+  ListNode *removeElements(ListNode *head, int val) {
+    if (!head) {
+      return head;
+    }
+    ListNode *prehead = new ListNode(-1);
+    prehead->next = head;
+    ListNode *q = prehead, *p = head;
+    while (p) {
+      if (p->val == val) {
+        q->next = p->next;
+        delete p;
+        p = q->next;
+      } else {
+        q = p;
+        p = p->next;
+      }
+    }
+    p = prehead->next;
+    delete prehead;
+    return p;
+  }
+};
+ListNode *buildList(vector<int> &v) {
+  ListNode *head = nullptr, *p;
+  for (const auto &i : v) {
+    if (head == nullptr) {
+      head = new ListNode(i);
+      p = head;
+    } else {
+      p->next = new ListNode(i);
+      p = p->next;
+    }
+  }
+  return head;
+}
+void printList(ListNode *l) {
+  ListNode *p = l;
+  while (p) {
+    cout << p->val << " ";
+    p = p->next;
+  }
+  cout << "\n";
+}
+void solve() {
+  vector<pair<vector<int>, int>> tc = {{{6}, 6}};
+  Solution s;
+  for (auto &i : tc) {
+    ListNode *l = buildList(i.first);
+    printList(l);
+    l = s.removeElements(l, i.second);
+    printList(l);
+  }
+}
+int main() {
+  cin.tie(NULL);
+  ios_base::sync_with_stdio(false);
+  solve();
+  return 0;
+}
