@@ -36,8 +36,8 @@ VALUES (1, 'john@example.com'),
        (3, 'john@example.com');
 
 /* Solution */
-delete p1
-from Person p1,
+DELETE p1
+FROM Person p1,
      Person p2
-where p1.email = p2.email
-  and p1.id > p2.id;
+WHERE p1.email = p2.email
+  AND p1.id > p2.id;
