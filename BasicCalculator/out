@@ -1,0 +1,6 @@
+Postfix String: 1 1 +
+2
+Postfix String: 2 1 -2 +
+3
+Postfix String: 1 4 5 +2 ++3 -6 8 ++
+23
