@@ -12,6 +12,12 @@
 // Follow up:
 // Could you do it without any loop/recursion in O(1) runtime?
 
+// Tags: math
+// Difficulty: Easy
+// Important: Digital root theory and the formula 1 + (n - 1) (base - 1) for the
+// digital root
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -28,19 +28,10 @@
 // cache.get(3);       // returns 3
 // cache.get(4);       // returns 4
 
+// Tags: cache
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class LRUCache {
   struct Node {

@@ -24,6 +24,8 @@
 // standard operations of a stack. You may assume that all operations are valid
 // (for example, no pop or peek operations will be called on an empty queue).
 
+// Tags: stack, queue
+
 #include <bits/stdc++.h>
 using namespace std;
 

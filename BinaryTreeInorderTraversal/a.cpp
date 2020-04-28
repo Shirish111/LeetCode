@@ -14,19 +14,13 @@
 // Output: [1,3,2]
 // Follow up: Recursive solution is trivial, could you do it iteratively?
 
+// Tags: binary_tree, traversal, inorder, postorder, preorder
+// Difficulty: Medium
+// Important: Learn the iterative inorder traversals
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 // Definition for a binary tree node.
 struct TreeNode {
@@ -110,8 +104,8 @@ class Solution {
   // Using Two Stacks
   vector<int> postorderTraversal(TreeNode *p) {
     vector<int> ans;
-    stack<TreeNode *> s2;
     stack<TreeNode *> s1;
+    stack<TreeNode *> s2;
     if (!p) {
       return ans;
     }

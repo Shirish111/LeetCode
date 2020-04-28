@@ -31,19 +31,12 @@
 //  4   4
 // Return false.
 
+// Tags: binary_tree, recursion
+// Difficulty: Easy
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 // Definition for a binary tree node.
 struct TreeNode {
@@ -56,23 +49,21 @@ struct TreeNode {
 class Solution {
  public:
   bool isBalanced(TreeNode *root) {
-    int n;
-    return isBalanced(root, n);
+    bool bflag = true;
+    validate(root, bflag);
+    return bflag;
   }
-  bool isBalanced(TreeNode *root, int &n) {
-    if (root == nullptr) {
-      n = 0;
-      return true;
+  int validate(TreeNode *p, bool &bflag) {
+    if (bflag == false || p == nullptr) {
+      return 0;
     }
-    int lh, rh;
-    if (!isBalanced(root->left, lh) || !isBalanced(root->right, rh)) {
-      return false;
+    int left, right;
+    left = validate(p->left, bflag);
+    if (bflag) {
+      right = validate(p->right, bflag);
     }
-    n = 1 + max(lh, rh);
-    if (abs(lh - rh) > 1) {
-      return false;
-    }
-    return true;
+    bflag = bflag && (abs(left - right) <= 1);
+    return max(left, right) + 1;
   }
 };
 void solve() {}

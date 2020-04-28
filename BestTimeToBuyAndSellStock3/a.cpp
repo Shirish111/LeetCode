@@ -31,20 +31,12 @@
 // Input: [7,6,4,3,1]
 // Output: 0
 // Explanation: In this case, no transaction is done, i.e. max profit = 0.
+// Important:
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution
+// Tags: dynamic_programming, interview
 
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class Solution {
  public:
@@ -81,6 +73,23 @@ class SolutionDP {
     return dp[num_transactions];
   }
 };
+
+// For reference
+// int MaxProfitDp(int[] prices) {
+//   if (prices.Length == 0) return 0;
+//   var dp = new int[3, prices.Length];
+//   for (int k = 1; k <= 2; k++) {
+//     for (int i = 1; i < prices.Length; i++) {
+//       int min = prices[0];
+//       for (int j = 1; j <= i; j++)
+//         min = Math.Min(min, prices[j] - dp[k - 1, j - 1]);
+//       dp[k, i] = Math.Max(dp[k, i - 1], prices[i] - min);
+//     }
+//   }
+
+//   return dp[2, prices.Length - 1];
+// }
+
 void solve() {
   vector<vector<int>> tc = {
       {7, 1, 5, 3, 6, 4}, {1, 2, 3, 4, 5}, {7, 6, 4, 3, 1}};

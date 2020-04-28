@@ -12,22 +12,21 @@
 // Input: [0,1]
 // Output: 0
 
+// Tags: bit_manipulation, bitwise_and, interview
+// Difficulty: Medium
+// Important:
+// Bitwise AND of a range can be solved as
+// If n > m => the LSB will be 0
+// Now the subproblem is to solve (n >> 1) and (m >> 1)
+// Do this until n == m
+// The answer is m << movefactor
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class Solution {
-public:
+ public:
   int rangeBitwiseAnd(int m, int n) {
     int moveFactor = 0;
     while (m != n) {

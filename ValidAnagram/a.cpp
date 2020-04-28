@@ -18,6 +18,8 @@
 // What if the inputs contain unicode characters? How would you adapt your
 // solution to such case?
 
+// Tags: array, hashing
+
 #include <bits/stdc++.h>
 using namespace std;
 

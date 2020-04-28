@@ -29,6 +29,8 @@
 // be sorted in ascending order. Could you solve it in logarithmic time
 // complexity?
 
+// Tags: dynamic_programming
+
 #include <bits/stdc++.h>
 using namespace std;
 

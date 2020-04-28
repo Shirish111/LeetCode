@@ -13,6 +13,8 @@
 // Follow up:
 // Could you do it in O(n) time and O(1) space?
 
+// Tags: palindrome, list
+
 #include <bits/stdc++.h>
 using namespace std;
 

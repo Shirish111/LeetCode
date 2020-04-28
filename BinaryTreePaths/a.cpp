@@ -18,6 +18,10 @@
 
 // Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 
+// Tags: binary_tree, recursion
+// Difficulty: Easy
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
 

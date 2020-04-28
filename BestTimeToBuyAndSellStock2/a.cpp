@@ -33,19 +33,14 @@
 // Output: 0
 // Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
+// Tags: dynamic_programming, interview
+// Difficulty: Medium
+// Important: Peak Valley graphical analysis
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/39611/Is-it-Best-Solution-with-O(n)-O(1).
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class Solution {
  public:
@@ -58,6 +53,30 @@ class Solution {
     return mx;
   }
 };
+
+class Solution2 {
+ public:
+  int maxProfit(vector<int>& a) {
+    int mx = 0;
+    int peak, valley;
+    int i = 0;
+    int n = a.size();
+    while (i < n) {
+      while (i < n && a[i] >= a[i + 1]) {
+        i++;
+      }
+      valley = a[i];
+      while (i < n && a[i] <= a[i + 1]) {
+        i++;
+      }
+      peak = a[i];
+      mx += peak - valley;
+      i++;
+    }
+    return mx;
+  }
+};
+
 void solve() {
   vector<vector<int>> tc = {
       {7, 1, 5, 3, 6, 4}, {1, 2, 3, 4, 5}, {7, 6, 4, 3, 1}};

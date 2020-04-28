@@ -26,6 +26,8 @@
 // Follow up:
 // Could you solve it in linear time?
 
+// Tags: array, queue
+
 #include <bits/stdc++.h>
 using namespace std;
 

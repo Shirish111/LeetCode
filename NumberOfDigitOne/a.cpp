@@ -9,6 +9,8 @@
 // Output: 6
 // Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
 
+// Tags: miscellaneous, number
+
 #include <bits/stdc++.h>
 using namespace std;
 

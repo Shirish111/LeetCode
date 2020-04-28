@@ -14,6 +14,8 @@
 // Output: ["0","2->4","6","8->9"]
 // Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
 
+// Tags: string_manipulation
+
 #include <bits/stdc++.h>
 using namespace std;
 

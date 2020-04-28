@@ -18,40 +18,32 @@
 //   [-1, -1, 2]
 // ]
 
+// Tags: sorting, two_pointers
+// Difficulty: Medium
+// Important: Skipping the elements for unique triplets
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class Solution {
  public:
-  vector<vector<int>> threeSum(vector<int>& a) {
+  vector<vector<int>> threeSum(vector<int> &a) {
     vector<vector<int>> ans;
-    int n = a.size(), fp, bp, sm, target;
     sort(a.begin(), a.end());
-    int i = 0;
-    while (i < n - 2) {
-      target = -a[i];
+    int sm, n = a.size(), fp, bp;
+    for (int i = 0; i < n - 2;) {
       fp = i + 1;
       bp = n - 1;
       while (fp < bp) {
-        sm = a[fp] + a[bp];
-        if (sm == target) {
-          ans.push_back(vector<int>({a[i], a[fp], a[bp]}));
+        sm = a[i] + a[fp] + a[bp];
+        if (sm == 0) {
+          ans.push_back({a[i], a[fp], a[bp]});
           fp++;
           bp--;
           while (fp < bp && a[fp] == a[fp - 1]) fp++;
           while (fp < bp && a[bp] == a[bp + 1]) bp--;
-        } else if (sm < target) {
+        } else if (sm < 0) {
           fp++;
         } else {
           bp--;
@@ -63,13 +55,18 @@ class Solution {
     return ans;
   }
 };
+
 void solve() {
-  Solution solution;
-  vector<int> a = {0, 0, 0};
-  vector<vector<int>> ans = solution.threeSum(a);
-  for (int i = 0; i < ans.size(); i++) {
-    copy(ans[i].begin(), ans[i].end(), ostream_iterator<int>(cout, " "));
-    cout << "\n";
+  vector<vector<int>> tc = {{-1, 0, 1, 2, -1, -4}};
+  Solution s;
+  for (auto &i : tc) {
+    vector<vector<int>> ans = s.threeSum(i);
+    for (auto &j : ans) {
+      for (auto &k : j) {
+        cout << k << " ";
+      }
+      cout << "\n";
+    }
   }
 }
 int main() {

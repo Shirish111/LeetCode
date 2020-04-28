@@ -14,6 +14,8 @@
 // Could you solve it with constant space complexity? (The output array does not
 // count as extra space for the purpose of space complexity analysis.)
 
+// Tags: math, miscellaneous
+
 #include <bits/stdc++.h>
 using namespace std;
 

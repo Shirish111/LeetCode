@@ -1,3 +1,5 @@
+// Add Two Numbers
+
 // You are given two non-empty linked lists representing two non-negative
 // integers. The digits are stored in reverse order and each of their nodes
 // contain a single digit. Add the two numbers and return it as a linked list.
@@ -20,89 +22,80 @@
  * };
  */
 
+// Tags: list
+// Difficulty: Easy
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
-ll a, b;
+// Definition for singly-linked list.
 struct ListNode {
   int val;
   ListNode *next;
-  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x) : val(x), next(NULL) {}
 };
-class List {
+
+class Solution {
  public:
-  ListNode *head, *tail;
-  List() { head = tail = nullptr; }
-  void addNode(int data) {
-    if (!head) {
-      head = tail = new ListNode(data);
-    } else {
-      ListNode *p = new ListNode(data);
-      tail->next = p;
-      tail = p;
+  ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+    ListNode *l = nullptr, *head;
+    int carry = 0, sm, n1, n2;
+    while (l1 != nullptr || l2 != nullptr) {
+      n1 = l1 == nullptr ? 0 : l1->val;
+      n2 = l2 == nullptr ? 0 : l2->val;
+      sm = n1 + n2 + carry;
+      carry = sm / 10;
+      if (l == nullptr) {
+        l = new ListNode(sm % 10);
+        head = l;
+      } else {
+        l->next = new ListNode(sm % 10);
+        l = l->next;
+      }
+      if (l1) {
+        l1 = l1->next;
+      }
+      if (l2) {
+        l2 = l2->next;
+      }
     }
+    if (carry) {
+      l->next = new ListNode(carry);
+    }
+    return head;
   }
 };
-List l1, l2;
-void initList(List &l, ll n) {
-  if (n == 0) {
-    l.addNode(0);
-  }
-  while (n) {
-    l.addNode(n % 10);
-    n = n / 10;
-  }
-}
-void initialize() {
-  initList(l1, a);
-  initList(l2, b);
-}
-ListNode *add(ListNode *l1, ListNode *l2) {
-  // O(n) where n is the length of the list
-  ListNode *head, *q = nullptr, *p;
-  while (l1 || l2) {
-    int n1 = l1 == nullptr ? 0 : l1->val;
-    int n2 = l2 == nullptr ? 0 : l2->val;
-    if (head == nullptr) {
-      head = new ListNode(n1 + n2);
+ListNode *constructList(string s) {
+  reverse(s.begin(), s.end());
+  ListNode *l = nullptr, *head;
+  for (auto &i : s) {
+    if (l == nullptr) {
+      l = new ListNode(i - '0');
+      head = l;
     } else {
-      p = new ListNode(n1 + n2);
-      q->next = p;
+      l->next = new ListNode(i - '0');
+      l = l->next;
     }
-    if (l1) {
-      l1 = l1->next;
-    }
-    if (l2) {
-      l2 = l2->next;
-    }
-    q = p;
   }
   return head;
 }
-void printlist(ListNode *l) {
-  ListNode *p = l;
+void printList(ListNode *p) {
   while (p) {
     cout << p->val << " ";
     p = p->next;
   }
-  cout << "\n";
+  cout << endl;
 }
 void solve() {
-  cin >> a >> b;
-  initialize();
-  ListNode *l3 = add(l1.head, l2.head);
-  printlist(l3);
+  vector<pair<string, string>> tc = {{"243", "564"}};
+  Solution s;
+  for (auto &i : tc) {
+    ListNode *l1 = constructList(i.first);
+    ListNode *l2 = constructList(i.second);
+    ListNode *l = s.addTwoNumbers(l1, l2);
+    printList(l);
+  }
 }
 int main() {
   cin.tie(NULL);

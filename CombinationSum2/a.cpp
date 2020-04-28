@@ -1,11 +1,10 @@
-// Combination Sum
+// Combination Sum II
 
-// Given a set of candidate numbers (candidates) (without duplicates) and a
-// target number (target), find all unique combinations in candidates where the
-// candidate numbers sums to target.
+// Given a collection of candidate numbers (candidates) and a target number
+// (target), find all unique combinations in candidates where the candidate
+// numbers sums to target.
 
-// The same repeated number may be chosen from candidates unlimited number of
-// times.
+// Each number in candidates may only be used once in the combination.
 
 // Note:
 
@@ -13,35 +12,30 @@
 // The solution set must not contain duplicate combinations.
 // Example 1:
 
-// Input: candidates = [2,3,6,7], target = 7,
+// Input: candidates = [10,1,2,7,6,1,5], target = 8,
 // A solution set is:
 // [
-//   [7],
-//   [2,2,3]
+//   [1, 7],
+//   [1, 2, 5],
+//   [2, 6],
+//   [1, 1, 6]
 // ]
 // Example 2:
 
-// Input: candidates = [2,3,5], target = 8,
+// Input: candidates = [2,5,2,1,2], target = 5,
 // A solution set is:
 // [
-//   [2,2,2,2],
-//   [2,3,3],
-//   [3,5]
+//   [1,2,2],
+//   [5]
 // ]
+
+// Tags: back_tracking, recursion, interview
+// Difficulty: Medium
+// Important: Skipping duplicates by using i == beg || c[i] != c[i - 1]
+// Status: Done
 
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class Solution {
  public:

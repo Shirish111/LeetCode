@@ -14,6 +14,8 @@
 // Input: [1,1,1,3,3,2,2,2]
 // Output: [1,2]
 
+// Tags: moore_voting_algorithm, majority_element
+
 #include <bits/stdc++.h>
 using namespace std;
 

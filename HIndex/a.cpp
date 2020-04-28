@@ -20,6 +20,8 @@
 // Note: If there are several possible values for h, the maximum one is taken as
 // the h-index.
 
+// Tags: dynamic_programming
+
 #include <bits/stdc++.h>
 using namespace std;
 

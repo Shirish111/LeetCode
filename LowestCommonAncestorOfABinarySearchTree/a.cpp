@@ -26,6 +26,8 @@
 // All of the nodes' values will be unique.
 // p and q are different and both values will exist in the BST.
 
+// Tags: lca, binary_tree
+
 #include <bits/stdc++.h>
 using namespace std;
 

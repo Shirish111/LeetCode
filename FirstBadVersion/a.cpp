@@ -21,6 +21,9 @@
 // call isBadVersion(4) -> true
 
 // Then 4 is the first bad version.
+
+// Tags: binary_search
+
 #include <bits/stdc++.h>
 using namespace std;
 

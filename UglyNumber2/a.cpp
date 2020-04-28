@@ -14,6 +14,8 @@
 // 1 is typically treated as an ugly number.
 // n does not exceed 1690.
 
+// Tags: miscellaneous, primes
+
 #include <bits/stdc++.h>
 using namespace std;
 

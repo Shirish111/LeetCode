@@ -15,6 +15,8 @@
 // Your algorithm should run in linear runtime complexity. Could you implement
 // it using only constant extra space complexity?
 
+// Tags: math
+
 #include <bits/stdc++.h>
 using namespace std;
 

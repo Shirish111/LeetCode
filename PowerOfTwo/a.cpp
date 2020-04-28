@@ -17,6 +17,8 @@
 // Input: 218
 // Output: false
 
+// Tags: bit_manipulation
+
 #include <bits/stdc++.h>
 using namespace std;
 

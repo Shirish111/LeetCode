@@ -19,41 +19,31 @@
 //   [-2,  0, 0, 2]
 // ]
 
+// Tags: sorting, two_pointers
+// Difficulty: Medium
+// Important: Skipping the elements for unique triplets
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 class Solution {
  public:
   vector<vector<int>> fourSum(vector<int>& a, int target) {
-    int n = a.size();
     vector<vector<int>> ans;
-    if (a.size() == 0) {
-      return ans;
-    }
+    int n = a.size(), sm, fp, bp;
     sort(a.begin(), a.end());
-    int sm;
     for (int i = 0; i < n - 3;) {
       for (int j = i + 1; j < n - 2;) {
-        int fp = j + 1;
-        int bp = n - 1;
+        fp = j + 1;
+        bp = n - 1;
         while (fp < bp) {
           sm = a[i] + a[j] + a[fp] + a[bp];
           if (sm == target) {
             ans.push_back({a[i], a[j], a[fp], a[bp]});
             fp++;
-            while (fp < bp && a[fp] == a[fp - 1]) fp++;
             bp--;
+            while (fp < bp && a[fp] == a[fp - 1]) fp++;
             while (fp < bp && a[bp] == a[bp + 1]) bp--;
           } else if (sm < target) {
             fp++;
@@ -62,25 +52,23 @@ class Solution {
           }
         }
         j++;
-        while (j < n - 2 && a[j] == a[j - 1]) {
-          j++;
-        }
+        while (j < n - 1 && a[j] == a[j - 1]) j++;
       }
       i++;
-      while (i < n - 3 && a[i] == a[i - 1]) {
-        i++;
-      }
+      while (i < n && a[i] == a[i - 1]) i++;
     }
     return ans;
   }
 };
 void solve() {
   vector<pair<vector<int>, int>> tc = {{{1, 0, -1, 0, -2, 2}, 0}};
-  Solution solution;
+  Solution s;
   for (auto& i : tc) {
-    vector<vector<int>> ans = solution.fourSum(i.first, i.second);
-    for (const auto& j : ans) {
-      copy(j.begin(), j.end(), ostream_iterator<int>(cout, " "));
+    vector<vector<int>> ans = s.fourSum(i.first, i.second);
+    for (auto& j : ans) {
+      for (auto& k : j) {
+        cout << k << " ";
+      }
       cout << "\n";
     }
   }

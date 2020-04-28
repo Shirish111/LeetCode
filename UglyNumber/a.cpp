@@ -4,6 +4,8 @@
 
 // Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
 
+// Tags: prime
+
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -31,6 +31,8 @@
 // find the kth smallest frequently? How would you optimize the kthSmallest
 // routine?
 
+// Tags: binary_tree, inorder
+
 #include <bits/stdc++.h>
 using namespace std;
 

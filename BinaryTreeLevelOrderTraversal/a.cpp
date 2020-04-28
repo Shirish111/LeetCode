@@ -17,19 +17,14 @@
 //   [15,7]
 // ]
 
+// Tags: binary_tree, level_order, queue
+// Difficulty: Easy
+// Important: You can differentiate between the levels of binary tree in level
+// order traversal by using queue size in the loop
+// Status: Done
+
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define X first
-#define Y second
-#define PB push_back
-#define F0(I, N) for (ll I = 0; I < N; I++)
-#define F1(I, N) for (ll I = 1; I <= N; I++)
-#define F(I, X, N) for (ll I = X; I < N; I++)
-#define R0(I, N) for (ll I = N - 1; I >= 0; I--)
-#define R1(I, N) for (ll I = N; I > 0; I--)
-#define R(I, X, N) for (ll I = N - 1; I >= X; I--)
-#define A(X) X.begin(), X.end()
 
 // Definition for a binary tree node.
 struct TreeNode {
@@ -66,6 +61,37 @@ class Solution {
     return ans;
   }
 };
+
+class Solution2 {
+ public:
+  vector<vector<int>> levelOrder(TreeNode *root) {
+    vector<vector<int>> ans;
+    if (root == nullptr) {
+      return ans;
+    }
+    queue<TreeNode *> q;
+    TreeNode *p;
+    q.push(root);
+    while (!q.empty()) {
+      int cnt = q.size();
+      vector<int> v;
+      while (cnt--) {
+        p = q.front();
+        v.push_back(p->val);
+        q.pop();
+        if (p->left) {
+          q.push(p->left);
+        }
+        if (p->right) {
+          q.push(p->right);
+        }
+      }
+      ans.push_back(v);
+    }
+    return ans;
+  }
+};
+
 void solve() {}
 int main() {
   cin.tie(nullptr);
