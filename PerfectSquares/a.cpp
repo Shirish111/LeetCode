@@ -13,6 +13,8 @@
 // Input: n = 13
 // Output: 2
 // Explanation: 13 = 4 + 9.
+// Tags: dynamic_programming, interview
+// Difficulty: Medium
 #include <bits/stdc++.h>
 using namespace std;
 
